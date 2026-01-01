@@ -64,8 +64,8 @@
 </head>
 <body class="paper-texture text-gray-800 antialiased overflow-x-hidden">
     
-    <!-- 배경 음악 (loop 속성으로 반복 재생) -->
-    <audio id="bgm" src="bgm.mp3" loop></audio>
+    <!-- 배경 음악 (autoplay loop 속성으로 자동/반복 재생) -->
+    <audio id="bgm" src="bgm.mp3" autoplay loop></audio>
 
     <!-- 모바일 컨테이너 -->
     <div class="max-w-md mx-auto bg-white min-h-screen shadow-2xl relative border-x border-gray-100">
@@ -87,9 +87,6 @@
                 <!-- 이미지 경로: 같은 폴더의 image1.png -->
                 <img src="image1.png" alt="Wedding Comic" class="w-full h-full object-cover">
                 
-                <div class="absolute bottom-0 w-full bg-white/90 py-2 border-t-2 border-black">
-                    <p class="hand-font text-xl">국시 합격부터 결혼까지!</p>
-                </div>
             </div>
 
             <p class="hand-font text-2xl mt-4 text-gray-700 fade-in-up" style="transition-delay: 300ms;">
@@ -383,6 +380,26 @@
         const musicBtn = document.getElementById('musicBtn');
         const musicIcon = musicBtn.querySelector('i');
         let isPlaying = false;
+
+        // 자동 재생 시도 (브라우저 정책에 따라 실패할 수 있음)
+        // PC에서도 사용자 인터랙션 없이는 자동 재생이 막히는 경우가 많습니다.
+        window.onload = function() {
+            bgm.volume = 0.5; // 소리가 너무 크지 않게 조절
+            var promise = bgm.play();
+
+            if (promise !== undefined) {
+                promise.then(_ => {
+                    // Autoplay started!
+                    isPlaying = true;
+                    musicIcon.className = 'fas fa-music text-pink-500 text-lg';
+                    musicBtn.classList.add('animate-spin-slow');
+                }).catch(error => {
+                    // Autoplay was prevented.
+                    isPlaying = false;
+                    // 버튼은 정지 상태(음소거 아이콘)로 유지
+                });
+            }
+        };
 
         musicBtn.addEventListener('click', () => {
             if (isPlaying) {
