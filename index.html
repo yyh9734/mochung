@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>최윤호 & 황신혜 결혼합니다</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: 찰리브라운 느낌의 '감자꽃', 본문용 '나눔고딕' -->
     <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -30,7 +27,6 @@
         .fade-in-up {
             opacity: 0;
             transform: translateY(30px);
-            /* 트랜지션 효과: 2.4s로 수정 */
             transition: opacity 2.4s ease-out, transform 2.4s ease-out;
         }
         /* 애니메이션: visible 클래스가 붙으면 불투명해지고 제자리로 올라옴 */
@@ -64,29 +60,22 @@
 </head>
 <body class="paper-texture text-gray-800 antialiased overflow-x-hidden">
     
-    <!-- 배경 음악 (autoplay loop 속성으로 자동/반복 재생) -->
     <audio id="bgm" src="bgm.mp3" autoplay loop></audio>
 
-    <!-- 모바일 컨테이너 -->
     <div class="max-w-md mx-auto bg-white min-h-screen shadow-2xl relative border-x border-gray-100">
         
-        <!-- BGM 컨트롤 버튼 (우측 상단 고정) -->
         <button id="musicBtn" class="absolute top-4 right-4 z-50 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow-md border border-gray-200 transition hover:bg-gray-100">
             <i class="fas fa-volume-xmark text-gray-400 text-lg"></i>
         </button>
 
-        <!-- 1. 메인 커버 -->
         <header class="relative pt-12 pb-8 px-6 text-center flex flex-col items-center">
             <p class="hand-font text-xl text-stone-500 mb-2 fade-in-up">저희 결혼합니다</p>
             <h1 class="hand-font text-5xl mb-6 tracking-wide fade-in-up" style="transition-delay: 100ms;">
                 최윤호 <span class="text-sm align-middle mx-1">♥</span> 황신혜
             </h1>
             
-            <!-- 메인 이미지 (4컷 만화) -->
             <div class="w-full aspect-square bg-gray-50 mb-6 comic-border overflow-hidden relative fade-in-up" style="transition-delay: 200ms;">
-                <!-- 이미지 경로: 같은 폴더의 image1.png -->
                 <img src="image1.png" alt="Wedding Comic" class="w-full h-full object-cover">
-                
             </div>
 
             <p class="hand-font text-2xl mt-4 text-gray-700 fade-in-up" style="transition-delay: 300ms;">
@@ -100,14 +89,12 @@
             </p>
         </header>
 
-        <!-- 구분선 -->
         <div class="flex justify-center my-4">
             <div class="w-1 h-1 bg-gray-300 rounded-full mx-1"></div>
             <div class="w-1 h-1 bg-gray-300 rounded-full mx-1"></div>
             <div class="w-1 h-1 bg-gray-300 rounded-full mx-1"></div>
         </div>
 
-        <!-- 2. 초대글 -->
         <section class="px-8 py-10 text-center fade-in-up">
             <h2 class="hand-font text-3xl mb-6 text-blue-900">초대합니다</h2>
             <p class="leading-loose text-gray-600 text-sm mb-6 font-light">
@@ -134,66 +121,33 @@
             </div>
         </section>
 
-        <!-- 3. Our Story & Gallery -->
         <section class="bg-slate-50 py-10 px-0 border-y-2 border-black fade-in-up">
             <h2 class="hand-font text-center text-3xl mb-8">Our Story</h2>
             
-            <!-- 웨딩 갤러리 카라셀 -->
             <div class="relative w-full mb-10 px-0">
                 <div class="carousel-container aspect-[3/4] bg-gray-200 comic-border mx-6 relative overflow-hidden">
                     <div class="carousel-track h-full" id="gallery-track">
-                        <!-- 이미지 10장 (Placeholder) -->
-                        <div class="carousel-slide relative">
-                            <img src="https://placehold.co/600x800/pink/white?text=Wedding+Photo+1" class="w-full h-full object-cover">
-                        </div>
-                        <div class="carousel-slide relative">
-                            <img src="https://placehold.co/600x800/skyblue/white?text=Wedding+Photo+2" class="w-full h-full object-cover">
-                        </div>
-                        <div class="carousel-slide relative">
-                            <img src="https://placehold.co/600x800/lightgray/black?text=Wedding+Photo+3" class="w-full h-full object-cover">
-                        </div>
-                         <div class="carousel-slide relative">
-                            <img src="https://placehold.co/600x800/pink/white?text=Wedding+Photo+4" class="w-full h-full object-cover">
-                        </div>
-                        <div class="carousel-slide relative">
-                            <img src="https://placehold.co/600x800/skyblue/white?text=Wedding+Photo+5" class="w-full h-full object-cover">
-                        </div>
-                        <div class="carousel-slide relative">
-                            <img src="https://placehold.co/600x800/lightgray/black?text=Wedding+Photo+6" class="w-full h-full object-cover">
-                        </div>
-                         <div class="carousel-slide relative">
-                            <img src="https://placehold.co/600x800/pink/white?text=Wedding+Photo+7" class="w-full h-full object-cover">
-                        </div>
-                        <div class="carousel-slide relative">
-                            <img src="https://placehold.co/600x800/skyblue/white?text=Wedding+Photo+8" class="w-full h-full object-cover">
-                        </div>
-                        <div class="carousel-slide relative">
-                            <img src="https://placehold.co/600x800/lightgray/black?text=Wedding+Photo+9" class="w-full h-full object-cover">
-                        </div>
-                         <div class="carousel-slide relative">
-                            <img src="https://placehold.co/600x800/pink/white?text=Wedding+Photo+10" class="w-full h-full object-cover">
-                        </div>
+                        <div class="carousel-slide relative"><img src="https://placehold.co/600x800/pink/white?text=Wedding+Photo+1" class="w-full h-full object-cover"></div>
+                        <div class="carousel-slide relative"><img src="https://placehold.co/600x800/skyblue/white?text=Wedding+Photo+2" class="w-full h-full object-cover"></div>
+                        <div class="carousel-slide relative"><img src="https://placehold.co/600x800/lightgray/black?text=Wedding+Photo+3" class="w-full h-full object-cover"></div>
+                        <div class="carousel-slide relative"><img src="https://placehold.co/600x800/pink/white?text=Wedding+Photo+4" class="w-full h-full object-cover"></div>
+                        <div class="carousel-slide relative"><img src="https://placehold.co/600x800/skyblue/white?text=Wedding+Photo+5" class="w-full h-full object-cover"></div>
+                        <div class="carousel-slide relative"><img src="https://placehold.co/600x800/lightgray/black?text=Wedding+Photo+6" class="w-full h-full object-cover"></div>
+                        <div class="carousel-slide relative"><img src="https://placehold.co/600x800/pink/white?text=Wedding+Photo+7" class="w-full h-full object-cover"></div>
+                        <div class="carousel-slide relative"><img src="https://placehold.co/600x800/skyblue/white?text=Wedding+Photo+8" class="w-full h-full object-cover"></div>
+                        <div class="carousel-slide relative"><img src="https://placehold.co/600x800/lightgray/black?text=Wedding+Photo+9" class="w-full h-full object-cover"></div>
+                        <div class="carousel-slide relative"><img src="https://placehold.co/600x800/pink/white?text=Wedding+Photo+10" class="w-full h-full object-cover"></div>
                     </div>
                     
-                    <!-- 네비게이션 버튼 -->
-                    <button id="prevBtn" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white text-black w-8 h-8 rounded-full flex items-center justify-center shadow-md z-10">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button id="nextBtn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white text-black w-8 h-8 rounded-full flex items-center justify-center shadow-md z-10">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                    <button id="prevBtn" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white text-black w-8 h-8 rounded-full flex items-center justify-center shadow-md z-10"><i class="fas fa-chevron-left"></i></button>
+                    <button id="nextBtn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white text-black w-8 h-8 rounded-full flex items-center justify-center shadow-md z-10"><i class="fas fa-chevron-right"></i></button>
                     
-                    <!-- 페이지 인디케이터 -->
-                    <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-1 z-10" id="indicators">
-                        <!-- JS로 생성됨 -->
-                    </div>
+                    <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-1 z-10" id="indicators"></div>
                 </div>
                 <p class="text-center text-xs text-gray-400 mt-2"><i class="fas fa-hand-pointer mr-1"></i>사진을 좌우로 넘겨보세요</p>
             </div>
-
         </section>
 
-        <!-- 4. 캘린더 -->
         <section class="py-12 px-6 text-center fade-in-up">
             <h2 class="hand-font text-3xl mb-2">9월</h2>
             <p class="text-sm text-gray-400 mb-6">September, 2026</p>
@@ -230,7 +184,6 @@
                     <div>16</div>
                     <div>17</div>
                     <div>18</div>
-                    <!-- D-Day -->
                     <div class="relative flex items-center justify-center">
                         <div class="absolute w-8 h-8 bg-pink-400 rounded-full opacity-30 animate-pulse"></div>
                         <span class="relative z-10 font-bold text-white bg-black rounded-full w-7 h-7 flex items-center justify-center text-xs">19</span>
@@ -258,7 +211,6 @@
             </div>
         </section>
 
-        <!-- 5. 오시는 길 -->
         <section class="bg-gray-50 py-12 px-6 fade-in-up">
             <h2 class="hand-font text-3xl mb-6 text-center">오시는 길</h2>
             
@@ -273,21 +225,13 @@
                     </p>
                     <p class="text-xs text-gray-500 mt-1">TEL. 02-2123-4101~2</p>
                 </div>
-                <!-- 약도 이미지 수정 -->
-                 <div class="w-full bg-gray-50 mb-4 flex items-center justify-center border border-gray-300 overflow-hidden">
+                <div class="w-full bg-gray-50 mb-4 flex items-center justify-center border border-gray-300 overflow-hidden">
                     <img src="map1.png" alt="연세대학교 알렌관 약도" class="w-full h-auto object-contain">
                 </div>
                 <div class="grid grid-cols-3 gap-2">
-                    <button onclick="window.open('https://map.naver.com/p/search/연세대학교%20알렌관')" class="bg-[#03C75A] text-white py-2 rounded text-xs font-bold hover:opacity-90 transition">
-                        네이버 지도
-                    </button>
-                    <button onclick="window.open('https://map.kakao.com/link/search/연세대학교%20알렌관')" class="bg-[#FAE100] text-black py-2 rounded text-xs font-bold hover:opacity-90 transition">
-                        카카오 맵
-                    </button>
-                    <!-- 티맵은 웹 링크가 제한적이므로 주소 복사로 유도 -->
-                    <button onclick="copyAddress('연세대학교 알렌관'); alert('주소가 복사되었습니다. 티맵에서 붙여넣기 해주세요.')" class="bg-[#000000] text-white py-2 rounded text-xs font-bold hover:opacity-90 transition">
-                        티맵
-                    </button>
+                    <button onclick="window.open('https://map.naver.com/p/search/연세대학교%20알렌관')" class="bg-[#03C75A] text-white py-2 rounded text-xs font-bold hover:opacity-90 transition">네이버 지도</button>
+                    <button onclick="window.open('https://map.kakao.com/link/search/연세대학교%20알렌관')" class="bg-[#FAE100] text-black py-2 rounded text-xs font-bold hover:opacity-90 transition">카카오 맵</button>
+                    <button onclick="copyAddress('연세대학교 알렌관'); alert('주소가 복사되었습니다. 티맵에서 붙여넣기 해주세요.')" class="bg-[#000000] text-white py-2 rounded text-xs font-bold hover:opacity-90 transition">티맵</button>
                 </div>
             </div>
 
@@ -316,7 +260,6 @@
             </div>
         </section>
 
-        <!-- 6. 마음 전하실 곳 -->
         <section class="py-12 px-6 fade-in-up">
             <h2 class="hand-font text-3xl mb-6 text-center">마음 전하실 곳</h2>
             <p class="text-center text-gray-600 text-sm mb-8 leading-relaxed">
@@ -326,54 +269,91 @@
             </p>
 
             <div class="space-y-4">
+                
                 <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
                     <h3 class="hand-font text-xl mb-3 text-blue-900 flex items-center">
                         <span class="text-base mr-2">신랑측</span> 최윤호
                     </h3>
-                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+                    
+                    <div class="flex justify-between items-center bg-blue-50 p-3 rounded mb-2">
                         <div class="text-sm text-gray-700">
-                            <span class="font-bold">카카오뱅크</span> 123-45-67890<br>
-                            <span class="text-xs text-gray-500">(예금주: 최윤호)</span>
+                            <span class="font-bold">카카오뱅크</span> (신랑)<br>
+                            <span class="text-xs text-gray-500">123-45-67890</span>
                         </div>
-                        <button onclick="copyAccountNumber('카카오뱅크 123-45-67890 최윤호')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs px-3 py-2 rounded transition">
-                            복사하기
-                        </button>
+                        <button onclick="copyAccountNumber('카카오뱅크 123-45-67890 최윤호')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition">복사하기</button>
+                    </div>
+
+                    <button onclick="toggleAccount('groom-parents', this)" class="w-full py-2 text-xs text-gray-500 bg-gray-50 border border-gray-100 rounded flex justify-center items-center hover:bg-gray-100 transition mt-2">
+                        <span>혼주 계좌번호 보기</span> <i class="fas fa-chevron-down ml-2 transition-transform duration-300"></i>
+                    </button>
+
+                    <div id="groom-parents" class="hidden mt-2 space-y-2">
+                        <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+                            <div class="text-sm text-gray-700">
+                                <span class="font-bold">신랑 아버지</span> 성함<br>
+                                <span class="text-xs text-gray-500">은행명 000-0000-0000</span>
+                            </div>
+                            <button onclick="copyAccountNumber('은행명 000-0000-0000 예금주')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition">복사</button>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+                            <div class="text-sm text-gray-700">
+                                <span class="font-bold">신랑 어머니</span> 성함<br>
+                                <span class="text-xs text-gray-500">은행명 000-0000-0000</span>
+                            </div>
+                            <button onclick="copyAccountNumber('은행명 000-0000-0000 예금주')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition">복사</button>
+                        </div>
                     </div>
                 </div>
+
                 <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
                     <h3 class="hand-font text-xl mb-3 text-pink-900 flex items-center">
                         <span class="text-base mr-2">신부측</span> 황신혜
                     </h3>
-                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+                    
+                    <div class="flex justify-between items-center bg-pink-50 p-3 rounded mb-2">
                         <div class="text-sm text-gray-700">
-                            <span class="font-bold">국민은행</span> 098-765-4321<br>
-                            <span class="text-xs text-gray-500">(예금주: 황신혜)</span>
+                            <span class="font-bold">국민은행</span> (신부)<br>
+                            <span class="text-xs text-gray-500">098-765-4321</span>
                         </div>
-                        <button onclick="copyAccountNumber('국민은행 098-765-4321 황신혜')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs px-3 py-2 rounded transition">
-                            복사하기
-                        </button>
+                        <button onclick="copyAccountNumber('국민은행 098-765-4321 황신혜')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition">복사하기</button>
+                    </div>
+
+                    <button onclick="toggleAccount('bride-parents', this)" class="w-full py-2 text-xs text-gray-500 bg-gray-50 border border-gray-100 rounded flex justify-center items-center hover:bg-gray-100 transition mt-2">
+                        <span>혼주 계좌번호 보기</span> <i class="fas fa-chevron-down ml-2 transition-transform duration-300"></i>
+                    </button>
+
+                    <div id="bride-parents" class="hidden mt-2 space-y-2">
+                        <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+                            <div class="text-sm text-gray-700">
+                                <span class="font-bold">신부 아버지</span> 성함<br>
+                                <span class="text-xs text-gray-500">은행명 000-0000-0000</span>
+                            </div>
+                            <button onclick="copyAccountNumber('은행명 000-0000-0000 예금주')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition">복사</button>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+                            <div class="text-sm text-gray-700">
+                                <span class="font-bold">신부 어머니</span> 성함<br>
+                                <span class="text-xs text-gray-500">은행명 000-0000-0000</span>
+                            </div>
+                            <button onclick="copyAccountNumber('은행명 000-0000-0000 예금주')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition">복사</button>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- 7. 공유하기 -->
         <footer class="bg-gray-800 text-white py-10 px-6 text-center pb-20">
             <h2 class="hand-font text-2xl mb-4">참석해주셔서 감사합니다</h2>
             <div class="flex justify-center gap-4 mt-6">
-                <button onclick="shareLink()" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-800 hover:bg-gray-200 transition shadow-lg">
-                    <i class="fas fa-link"></i>
-                </button>
-                <button class="w-12 h-12 bg-[#FAE100] rounded-full flex items-center justify-center text-black hover:opacity-90 transition shadow-lg">
-                    <i class="fas fa-comment"></i>
-                </button>
+                <button onclick="shareLink()" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-800 hover:bg-gray-200 transition shadow-lg"><i class="fas fa-link"></i></button>
+                <button class="w-12 h-12 bg-[#FAE100] rounded-full flex items-center justify-center text-black hover:opacity-90 transition shadow-lg"><i class="fas fa-comment"></i></button>
             </div>
             <p class="text-xs text-gray-500 mt-8">Copyright 2026. YoonHo & Sinhye. All rights reserved.</p>
         </footer>
 
     </div>
 
-    <!-- 스크립트 -->
     <script>
         // 0. BGM 컨트롤
         const bgm = document.getElementById('bgm');
@@ -381,22 +361,16 @@
         const musicIcon = musicBtn.querySelector('i');
         let isPlaying = false;
 
-        // 자동 재생 시도 (브라우저 정책에 따라 실패할 수 있음)
-        // PC에서도 사용자 인터랙션 없이는 자동 재생이 막히는 경우가 많습니다.
         window.onload = function() {
-            bgm.volume = 0.5; // 소리가 너무 크지 않게 조절
+            bgm.volume = 0.5;
             var promise = bgm.play();
-
             if (promise !== undefined) {
                 promise.then(_ => {
-                    // Autoplay started!
                     isPlaying = true;
                     musicIcon.className = 'fas fa-music text-pink-500 text-lg';
                     musicBtn.classList.add('animate-spin-slow');
                 }).catch(error => {
-                    // Autoplay was prevented.
                     isPlaying = false;
-                    // 버튼은 정지 상태(음소거 아이콘)로 유지
                 });
             }
         };
@@ -404,12 +378,12 @@
         musicBtn.addEventListener('click', () => {
             if (isPlaying) {
                 bgm.pause();
-                musicIcon.className = 'fas fa-volume-xmark text-gray-400 text-lg'; // 아이콘 변경: 음소거
-                musicBtn.classList.remove('animate-spin-slow'); // 회전 멈춤
+                musicIcon.className = 'fas fa-volume-xmark text-gray-400 text-lg';
+                musicBtn.classList.remove('animate-spin-slow');
             } else {
                 bgm.play();
-                musicIcon.className = 'fas fa-music text-pink-500 text-lg'; // 아이콘 변경: 음표
-                musicBtn.classList.add('animate-spin-slow'); // 회전 시작
+                musicIcon.className = 'fas fa-music text-pink-500 text-lg';
+                musicBtn.classList.add('animate-spin-slow');
             }
             isPlaying = !isPlaying;
         });
@@ -421,58 +395,38 @@
         const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
         
         const dDayElement = document.getElementById('d-day-count');
-        if (diffDays > 0) {
-            dDayElement.textContent = `D-${diffDays}`;
-        } else if (diffDays === 0) {
-            dDayElement.textContent = `D-Day`;
-        } else {
-            dDayElement.textContent = `D+${Math.abs(diffDays)}`;
-        }
+        if (diffDays > 0) dDayElement.textContent = `D-${diffDays}`;
+        else if (diffDays === 0) dDayElement.textContent = `D-Day`;
+        else dDayElement.textContent = `D+${Math.abs(diffDays)}`;
 
-        // 2. 스크롤 애니메이션 (나타나고 사라지기)
-        const observerOptions = {
-            threshold: 0.1 // 10% 이상 보일 때 작동
-        };
-
+        // 2. 스크롤 애니메이션
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // 화면에 들어오면 visible 추가 (나타남)
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                } 
-                // 화면에서 나가면 visible 제거 (사라짐)
-                else {
-                    entry.target.classList.remove('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+                else entry.target.classList.remove('visible');
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
 
-        document.querySelectorAll('.fade-in-up').forEach((el) => {
-            observer.observe(el);
-        });
-
-        // 3. 링크/계좌/주소 복사
+        // 3. 복사 기능
         function shareLink() {
-            const url = window.location.href;
-            navigator.clipboard.writeText(url).then(() => { alert('청첩장 주소가 복사되었습니다.'); }).catch(() => { alert('주소 복사에 실패했습니다.'); });
+            navigator.clipboard.writeText(window.location.href).then(() => alert('청첩장 주소가 복사되었습니다.')).catch(() => alert('주소 복사에 실패했습니다.'));
         }
-        function copyAccountNumber(accountText) {
-            navigator.clipboard.writeText(accountText).then(() => { alert('계좌번호가 복사되었습니다.\n' + accountText); }).catch(() => { alert('복사 실패. 다시 시도해주세요.'); });
+        function copyAccountNumber(text) {
+            navigator.clipboard.writeText(text).then(() => alert('계좌번호가 복사되었습니다.\n' + text)).catch(() => alert('복사 실패. 다시 시도해주세요.'));
         }
-        function copyAddress(addressText) {
-            navigator.clipboard.writeText(addressText).then(() => { alert('주소가 복사되었습니다.\n' + addressText); }).catch(() => { alert('주소 복사에 실패했습니다.'); });
+        function copyAddress(text) {
+            navigator.clipboard.writeText(text).then(() => alert('주소가 복사되었습니다.\n' + text)).catch(() => alert('주소 복사에 실패했습니다.'));
         }
 
-        // 4. 카라셀 (Gallery Carousel) 로직
+        // 4. 카라셀 (Gallery Carousel)
         const track = document.getElementById('gallery-track');
         const slides = Array.from(track.children);
         const nextBtn = document.getElementById('nextBtn');
         const prevBtn = document.getElementById('prevBtn');
         const indicatorsContainer = document.getElementById('indicators');
-
         let currentIndex = 0;
 
-        // 인디케이터 생성
         slides.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.classList.add('w-2', 'h-2', 'rounded-full', 'bg-white/50', 'transition-all', 'duration-300');
@@ -488,39 +442,30 @@
             currentIndex = index;
         };
 
-        // 버튼 클릭 이벤트
-        nextBtn.addEventListener('click', () => {
-            const newIndex = (currentIndex + 1) % slides.length;
-            updateCarousel(newIndex);
-        });
-        prevBtn.addEventListener('click', () => {
-            const newIndex = (currentIndex - 1 + slides.length) % slides.length;
-            updateCarousel(newIndex);
-        });
+        nextBtn.addEventListener('click', () => updateCarousel((currentIndex + 1) % slides.length));
+        prevBtn.addEventListener('click', () => updateCarousel((currentIndex - 1 + slides.length) % slides.length));
 
-        // 터치 스와이프 (Touch Swipe) 기능
         let touchStartX = 0;
         let touchEndX = 0;
-
-        track.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, {passive: true});
-
+        track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
         track.addEventListener('touchend', e => {
             touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
+            if (touchEndX < touchStartX - 50) updateCarousel((currentIndex + 1) % slides.length);
+            if (touchEndX > touchStartX + 50) updateCarousel((currentIndex - 1 + slides.length) % slides.length);
         }, {passive: true});
 
-        function handleSwipe() {
-            if (touchEndX < touchStartX - 50) {
-                // 왼쪽으로 스와이프 (다음 슬라이드)
-                const newIndex = (currentIndex + 1) % slides.length;
-                updateCarousel(newIndex);
-            }
-            if (touchEndX > touchStartX + 50) {
-                // 오른쪽으로 스와이프 (이전 슬라이드)
-                const newIndex = (currentIndex - 1 + slides.length) % slides.length;
-                updateCarousel(newIndex);
+        // 5. 계좌번호 토글 기능 (아코디언)
+        function toggleAccount(elementId, btn) {
+            const content = document.getElementById(elementId);
+            const icon = btn.querySelector('i');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+                btn.querySelector('span').textContent = '혼주 계좌번호 닫기';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+                btn.querySelector('span').textContent = '혼주 계좌번호 보기';
             }
         }
     </script>
