@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최윤호 & 황신혜 결혼합니다</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: 찰리브라운 느낌의 '감자꽃', 본문용 '나눔고딕' -->
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Nanum Gothic', sans-serif;
+            background-color: #fcfbf7; /* 종이 질감 배경색 */
+        }
+        .hand-font {
+            font-family: 'Gamja+Flower', cursive;
+        }
+        .paper-texture {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .comic-border {
+            border: 3px solid #000;
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+        }
+        /* 애니메이션: 기본 상태는 투명하고 아래로 내려가 있음 */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            /* 트랜지션 효과: 나타날 때와 사라질 때 모두 적용됨 */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        /* 애니메이션: visible 클래스가 붙으면 불투명해지고 제자리로 올라옴 */
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* 카라셀 스타일 */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            touch-action: pan-y; /* 수직 스크롤은 허용, 수평은 JS로 제어 */
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.3s ease-out;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body class="paper-texture text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- 모바일 컨테이너 -->
+    <div class="max-w-md mx-auto bg-white min-h-screen shadow-2xl relative border-x border-gray-100">
+        
+        <!-- 1. 메인 커버 -->
+        <header class="relative pt-12 pb-8 px-6 text-center flex flex-col items-center">
+            <p class="hand-font text-xl text-stone-500 mb-2 fade-in-up">저희 결혼합니다</p>
+            <h1 class="hand-font text-5xl mb-6 tracking-wide fade-in-up" style="transition-delay: 100ms;">
+                최윤호 <span class="text-sm align-middle mx-1">♥</span> 황신혜
+            </h1>
+            
+            <!-- 메인 이미지 (4컷 만화) -->
+            <div class="w-full aspect-square bg-gray-50 mb-6 comic-border overflow-hidden relative fade-in-up" style="transition-delay: 200ms;">
+                <!-- 이미지 경로: 같은 폴더의 image1.png -->
+                <img src="image1.png" alt="Wedding Comic" class="w-full h-full object-cover">
+                
+                <div class="absolute bottom-0 w-full bg-white/90 py-2 border-t-2 border-black">
+                    <p class="hand-font text-xl">국시 합격부터 결혼까지!</p>
+                </div>
+            </div>
+
+            <p class="hand-font text-2xl mt-4 text-gray-700 fade-in-up" style="transition-delay: 300ms;">
+                2026. 09. 19. SAT PM 05:00
+            </p>
+            <p class="text-sm text-blue-600 mt-2 fade-in-up" style="transition-delay: 400ms;">
+                * 식전 16시부터 웰컴 파티가 진행됩니다.
+            </p>
+            <p class="text-sm text-gray-500 mt-2 fade-in-up" style="transition-delay: 450ms;">
+                연세대학교 알렌관
+            </p>
+        </header>
+
+        <!-- 구분선 -->
+        <div class="flex justify-center my-4">
+            <div class="w-1 h-1 bg-gray-300 rounded-full mx-1"></div>
+            <div class="w-1 h-1 bg-gray-300 rounded-full mx-1"></div>
+            <div class="w-1 h-1 bg-gray-300 rounded-full mx-1"></div>
+        </div>
+
+        <!-- 2. 초대글 -->
+        <section class="px-8 py-10 text-center fade-in-up">
+            <h2 class="hand-font text-3xl mb-6 text-blue-900">초대합니다</h2>
+            <p class="leading-loose text-gray-600 text-sm mb-6 font-light">
+                함께 공부하며 꿈을 키우던 두 사람이<br>
+                이제 평생의 반려자가 되어<br>
+                새로운 출발선에 섭니다.<br><br>
+                서로의 다름을 이해하고<br>
+                같은 곳을 바라보며 걸어가겠습니다.<br>
+                저희 두 사람의 앞날을<br>
+                따뜻한 마음으로 축복해 주세요.
+            </p>
+            <div class="mt-8 text-center text-gray-500 text-xs">
+                <p>※ 화환은 정중히 사양합니다. 마음만 감사히 받겠습니다.</p>
+            </div>
+            <div class="mt-8 hand-font text-xl">
+                <div class="mb-2">
+                    <span class="text-base text-gray-500 mr-2">신랑</span> 
+                    <strong>최윤호</strong>
+                </div>
+                <div>
+                    <span class="text-base text-gray-500 mr-2">신부</span> 
+                    <strong>황신혜</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Our Story & Gallery (수정됨: 카라셀 추가) -->
+        <section class="bg-slate-50 py-10 px-0 border-y-2 border-black fade-in-up">
+            <h2 class="hand-font text-center text-3xl mb-8">Our Story</h2>
+            
+            <!-- 웨딩 갤러리 카라셀 -->
+            <div class="relative w-full mb-10 px-0">
+                <div class="carousel-container aspect-[3/4] bg-gray-200 comic-border mx-6 relative overflow-hidden">
+                    <div class="carousel-track h-full" id="gallery-track">
+                        <!-- 이미지 10장 (Placeholder) -->
+                        <div class="carousel-slide relative">
+                            <img src="https://placehold.co/600x800/pink/white?text=Wedding+Photo+1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="carousel-slide relative">
+                            <img src="https://placehold.co/600x800/skyblue/white?text=Wedding+Photo+2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="carousel-slide relative">
+                            <img src="https://placehold.co/600x800/lightgray/black?text=Wedding+Photo+3" class="w-full h-full object-cover">
+                        </div>
+                         <div class="carousel-slide relative">
+                            <img src="https://placehold.co/600x800/pink/white?text=Wedding+Photo+4" class="w-full h-full object-cover">
+                        </div>
+                        <div class="carousel-slide relative">
+                            <img src="https://placehold.co/600x800/skyblue/white?text=Wedding+Photo+5" class="w-full h-full object-cover">
+                        </div>
+                        <div class="carousel-slide relative">
+                            <img src="https://placehold.co/600x800/lightgray/black?text=Wedding+Photo+6" class="w-full h-full object-cover">
+                        </div>
+                         <div class="carousel-slide relative">
+                            <img src="https://placehold.co/600x800/pink/white?text=Wedding+Photo+7" class="w-full h-full object-cover">
+                        </div>
+                        <div class="carousel-slide relative">
+                            <img src="https://placehold.co/600x800/skyblue/white?text=Wedding+Photo+8" class="w-full h-full object-cover">
+                        </div>
+                        <div class="carousel-slide relative">
+                            <img src="https://placehold.co/600x800/lightgray/black?text=Wedding+Photo+9" class="w-full h-full object-cover">
+                        </div>
+                         <div class="carousel-slide relative">
+                            <img src="https://placehold.co/600x800/pink/white?text=Wedding+Photo+10" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <!-- 네비게이션 버튼 -->
+                    <button id="prevBtn" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white text-black w-8 h-8 rounded-full flex items-center justify-center shadow-md z-10">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="nextBtn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white text-black w-8 h-8 rounded-full flex items-center justify-center shadow-md z-10">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <!-- 페이지 인디케이터 -->
+                    <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-1 z-10" id="indicators">
+                        <!-- JS로 생성됨 -->
+                    </div>
+                </div>
+                <p class="text-center text-xs text-gray-400 mt-2"><i class="fas fa-hand-pointer mr-1"></i>사진을 좌우로 넘겨보세요</p>
+            </div>
+
+            <!-- 4컷 만화 스토리 설명 -->
+            <div class="space-y-6 px-6">
+                <!-- 컷 1 -->
+                <div class="bg-white p-3 border-2 border-black shadow-md flex items-center gap-4 fade-in-up">
+                    <div class="w-16 h-16 bg-gray-200 rounded-full flex-shrink-0 border border-black overflow-hidden flex items-center justify-center">
+                        <i class="fas fa-user-doctor text-2xl text-gray-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="hand-font text-xl font-bold">함께하는 꿈</h3>
+                        <p class="text-xs text-gray-500">서로 격려하며 국시 합격!</p>
+                    </div>
+                </div>
+                <!-- 컷 2 -->
+                <div class="bg-white p-3 border-2 border-black shadow-md flex items-center gap-4 fade-in-up">
+                    <div class="w-16 h-16 bg-blue-700 rounded-full flex-shrink-0 border border-black overflow-hidden flex items-center justify-center text-white">
+                        <i class="fas fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="hand-font text-xl font-bold text-blue-800">빛나는 졸업</h3>
+                        <p class="text-xs text-gray-500">캠퍼스에서의 추억을 안고</p>
+                    </div>
+                </div>
+                <!-- 컷 3 -->
+                <div class="bg-white p-3 border-2 border-black shadow-md flex items-center gap-4 fade-in-up">
+                    <div class="w-16 h-16 bg-gradient-to-r from-pink-300 to-sky-300 rounded-full flex-shrink-0 border border-black overflow-hidden flex items-center justify-center text-white">
+                        <i class="fas fa-snowflake text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="hand-font text-xl font-bold text-sky-600">함께하는 취미</h3>
+                        <p class="text-xs text-gray-500">하얀 설원 위를 함께 달리며</p>
+                    </div>
+                </div>
+                 <!-- 컷 4 -->
+                 <div class="bg-white p-3 border-2 border-black shadow-md flex items-center gap-4 fade-in-up">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex-shrink-0 border border-black overflow-hidden flex items-center justify-center">
+                        <i class="fas fa-heart text-2xl text-red-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="hand-font text-xl font-bold">새로운 시작</h3>
+                        <p class="text-xs text-gray-500">2026년 9월 19일, 우리 결혼합니다</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 캘린더 -->
+        <section class="py-12 px-6 text-center fade-in-up">
+            <h2 class="hand-font text-3xl mb-2">9월</h2>
+            <p class="text-sm text-gray-400 mb-6">September, 2026</p>
+            
+            <div class="inline-block w-full max-w-xs">
+                <div class="grid grid-cols-7 gap-2 text-sm hand-font text-lg">
+                    <div class="text-red-500">Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div class="text-blue-500">Sat</div>
+                    
+                    <div class="text-gray-300">30</div>
+                    <div class="text-gray-300">31</div>
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div class="text-blue-500">5</div>
+
+                    <div class="text-red-500">6</div>
+                    <div>7</div>
+                    <div>8</div>
+                    <div>9</div>
+                    <div>10</div>
+                    <div>11</div>
+                    <div class="text-blue-500">12</div>
+
+                    <div class="text-red-500">13</div>
+                    <div>14</div>
+                    <div>15</div>
+                    <div>16</div>
+                    <div>17</div>
+                    <div>18</div>
+                    <!-- D-Day -->
+                    <div class="relative flex items-center justify-center">
+                        <div class="absolute w-8 h-8 bg-pink-400 rounded-full opacity-30 animate-pulse"></div>
+                        <span class="relative z-10 font-bold text-white bg-black rounded-full w-7 h-7 flex items-center justify-center text-xs">19</span>
+                    </div>
+
+                    <div class="text-red-500">20</div>
+                    <div>21</div>
+                    <div>22</div>
+                    <div>23</div>
+                    <div>24</div>
+                    <div>25</div>
+                    <div class="text-blue-500">26</div>
+
+                    <div class="text-red-500">27</div>
+                    <div>28</div>
+                    <div>29</div>
+                    <div>30</div>
+                    <div class="text-gray-300">1</div>
+                    <div class="text-gray-300">2</div>
+                    <div class="text-gray-300">3</div>
+                </div>
+            </div>
+            <div class="mt-8 bg-black text-white inline-block px-6 py-2 rounded-full hand-font text-xl">
+                결혼식까지 <span id="d-day-count" class="text-pink-300">D-Day</span>
+            </div>
+        </section>
+
+        <!-- 5. 오시는 길 -->
+        <section class="bg-gray-50 py-12 px-6 fade-in-up">
+            <h2 class="hand-font text-3xl mb-6 text-center">오시는 길</h2>
+            
+            <div class="bg-white p-4 border border-gray-200 shadow-sm mb-4">
+                <div class="text-center mb-4">
+                    <h3 class="font-bold text-lg mb-1">연세대학교 알렌관</h3>
+                    <p class="text-xs text-gray-500">서울 서대문구 신촌동 134 (서대문구 연세로 50)</p>
+                    <p class="text-xs text-gray-500 mt-1">TEL. 02-2123-4101~2</p>
+                </div>
+                 <div class="w-full h-48 bg-gray-200 mb-4 flex items-center justify-center border border-gray-300">
+                    <span class="text-gray-500 text-sm"><i class="fas fa-map mb-2 block text-2xl"></i>약도 이미지</span>
+                </div>
+                <div class="grid grid-cols-3 gap-2">
+                    <button class="bg-[#03C75A] text-white py-2 rounded text-xs font-bold hover:opacity-90 transition">
+                        네이버 지도
+                    </button>
+                    <button class="bg-[#FAE100] text-black py-2 rounded text-xs font-bold hover:opacity-90 transition">
+                        카카오 맵
+                    </button>
+                    <button class="bg-[#000000] text-white py-2 rounded text-xs font-bold hover:opacity-90 transition">
+                        티맵
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-3 text-sm">
+                <div class="bg-white p-4 rounded border border-gray-200">
+                    <h4 class="font-bold flex items-center mb-2 text-blue-800"><i class="fas fa-subway mr-2"></i> 지하철</h4>
+                    <ul class="list-disc list-inside text-gray-600 text-xs leading-relaxed pl-2">
+                        <li><span class="text-green-600 font-bold">2호선 신촌역</span> 3번출구 → 7024번 승차 → 이대부중 하차</li>
+                        <li><span class="text-orange-500 font-bold">3호선 경복궁역</span> 1번출구 → 272, 606, 708번 승차 → 이대부중 하차</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-4 rounded border border-gray-200">
+                    <h4 class="font-bold flex items-center mb-2 text-blue-800"><i class="fas fa-bus mr-2"></i> 버스</h4>
+                    <p class="text-xs font-bold mt-1 text-gray-700">[이대후문 하차]</p>
+                    <p class="text-xs text-gray-600 pl-2 mb-2">간선: 470, 601, 750A / 지선: 6714, 7737</p>
+                    <p class="text-xs font-bold mt-1 text-gray-700">[이대부중 하차]</p>
+                    <p class="text-xs text-gray-600 pl-2">간선: 272, 606, 751 / 지선: 6714</p>
+                </div>
+                <div class="bg-white p-4 rounded border border-gray-200">
+                    <h4 class="font-bold flex items-center mb-2 text-blue-800"><i class="fas fa-car mr-2"></i> 주차안내</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        상남경영관, 에비슨의생명연구센터 주차장 이용<br>
+                        <span class="text-red-500 font-bold">* 하객 무료 주차 (지하 4시간 / 지상 3시간)</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 마음 전하실 곳 -->
+        <section class="py-12 px-6 fade-in-up">
+            <h2 class="hand-font text-3xl mb-6 text-center">마음 전하실 곳</h2>
+            <p class="text-center text-gray-600 text-sm mb-8 leading-relaxed">
+                참석이 어려우신 분들을 위해<br>
+                계좌번호를 안내해 드립니다.<br>
+                너른 마음으로 양해 부탁드립니다.
+            </p>
+
+            <div class="space-y-4">
+                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                    <h3 class="hand-font text-xl mb-3 text-blue-900 flex items-center">
+                        <span class="text-base mr-2">신랑측</span> 최윤호
+                    </h3>
+                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+                        <div class="text-sm text-gray-700">
+                            <span class="font-bold">카카오뱅크</span> 123-45-67890<br>
+                            <span class="text-xs text-gray-500">(예금주: 최윤호)</span>
+                        </div>
+                        <button onclick="copyAccountNumber('카카오뱅크 123-45-67890 최윤호')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs px-3 py-2 rounded transition">
+                            복사하기
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                    <h3 class="hand-font text-xl mb-3 text-pink-900 flex items-center">
+                        <span class="text-base mr-2">신부측</span> 황신혜
+                    </h3>
+                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+                        <div class="text-sm text-gray-700">
+                            <span class="font-bold">국민은행</span> 098-765-4321<br>
+                            <span class="text-xs text-gray-500">(예금주: 황신혜)</span>
+                        </div>
+                        <button onclick="copyAccountNumber('국민은행 098-765-4321 황신혜')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs px-3 py-2 rounded transition">
+                            복사하기
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 공유하기 -->
+        <footer class="bg-gray-800 text-white py-10 px-6 text-center pb-20">
+            <h2 class="hand-font text-2xl mb-4">참석해주셔서 감사합니다</h2>
+            <div class="flex justify-center gap-4 mt-6">
+                <button onclick="shareLink()" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-800 hover:bg-gray-200 transition shadow-lg">
+                    <i class="fas fa-link"></i>
+                </button>
+                <button class="w-12 h-12 bg-[#FAE100] rounded-full flex items-center justify-center text-black hover:opacity-90 transition shadow-lg">
+                    <i class="fas fa-comment"></i>
+                </button>
+            </div>
+            <p class="text-xs text-gray-500 mt-8">Copyright 2026. YoonHo & Sinhye. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <!-- 스크립트 -->
+    <script>
+        // 1. D-Day 계산
+        const weddingDate = new Date('2026-09-19T17:00:00');
+        const today = new Date();
+        const diff = weddingDate - today;
+        const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
+        
+        const dDayElement = document.getElementById('d-day-count');
+        if (diffDays > 0) {
+            dDayElement.textContent = `D-${diffDays}`;
+        } else if (diffDays === 0) {
+            dDayElement.textContent = `D-Day`;
+        } else {
+            dDayElement.textContent = `D+${Math.abs(diffDays)}`;
+        }
+
+        // 2. 스크롤 애니메이션 (나타나고 사라지기)
+        const observerOptions = {
+            threshold: 0.1 // 10% 이상 보일 때 작동
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // 화면에 들어오면 visible 추가 (나타남)
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } 
+                // 화면에서 나가면 visible 제거 (사라짐)
+                else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // 3. 링크/계좌 복사
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => { alert('청첩장 주소가 복사되었습니다.'); }).catch(() => { alert('주소 복사에 실패했습니다.'); });
+        }
+        function copyAccountNumber(accountText) {
+            navigator.clipboard.writeText(accountText).then(() => { alert('계좌번호가 복사되었습니다.\n' + accountText); }).catch(() => { alert('복사 실패. 다시 시도해주세요.'); });
+        }
+
+        // 4. 카라셀 (Gallery Carousel) 로직
+        const track = document.getElementById('gallery-track');
+        const slides = Array.from(track.children);
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const indicatorsContainer = document.getElementById('indicators');
+
+        let currentIndex = 0;
+
+        // 인디케이터 생성
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('w-2', 'h-2', 'rounded-full', 'bg-white/50', 'transition-all', 'duration-300');
+            if (index === 0) dot.classList.replace('bg-white/50', 'bg-white');
+            indicatorsContainer.appendChild(dot);
+        });
+        const dots = Array.from(indicatorsContainer.children);
+
+        const updateCarousel = (index) => {
+            track.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach(d => d.classList.replace('bg-white', 'bg-white/50'));
+            dots[index].classList.replace('bg-white/50', 'bg-white');
+            currentIndex = index;
+        };
+
+        // 버튼 클릭 이벤트
+        nextBtn.addEventListener('click', () => {
+            const newIndex = (currentIndex + 1) % slides.length;
+            updateCarousel(newIndex);
+        });
+        prevBtn.addEventListener('click', () => {
+            const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel(newIndex);
+        });
+
+        // 터치 스와이프 (Touch Swipe) 기능
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        track.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+
+        track.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, {passive: true});
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                // 왼쪽으로 스와이프 (다음 슬라이드)
+                const newIndex = (currentIndex + 1) % slides.length;
+                updateCarousel(newIndex);
+            }
+            if (touchEndX > touchStartX + 50) {
+                // 오른쪽으로 스와이프 (이전 슬라이드)
+                const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateCarousel(newIndex);
+            }
+        }
+    </script>
+</body>
+</html>
