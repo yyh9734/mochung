@@ -20,7 +20,7 @@
             font-family: 'Gamja+Flower', cursive;
         }
         .paper-texture {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
         .comic-border {
             border: 3px solid #000;
@@ -30,8 +30,8 @@
         .fade-in-up {
             opacity: 0;
             transform: translateY(30px);
-            /* 트랜지션 효과: 나타날 때와 사라질 때 모두 적용됨 */
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            /* 트랜지션 효과: 기존 0.8s의 3배인 2.4s로 수정하여 매우 천천히 나타나도록 조정 */
+            transition: opacity 2.4s ease-out, transform 2.4s ease-out;
         }
         /* 애니메이션: visible 클래스가 붙으면 불투명해지고 제자리로 올라옴 */
         .fade-in-up.visible {
