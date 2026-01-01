@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>최윤호 & 황신혜 결혼합니다</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         body {
-            font-family: 'Nanum Gothic', sans-serif;
+            /* 본문 폰트 변경: Noto Serif KR */
+            font-family: 'Noto Serif KR', serif;
             background-color: #fcfbf7; /* 종이 질감 배경색 */
         }
         .hand-font {
@@ -38,7 +41,7 @@
         .carousel-container {
             position: relative;
             overflow: hidden;
-            touch-action: pan-y; /* 수직 스크롤은 허용, 수평은 JS로 제어 */
+            touch-action: pan-y;
         }
         .carousel-track {
             display: flex;
@@ -97,7 +100,7 @@
 
         <section class="px-8 py-10 text-center fade-in-up">
             <h2 class="hand-font text-3xl mb-6 text-blue-900">초대합니다</h2>
-            <p class="leading-loose text-gray-600 text-sm mb-6 font-light">
+            <p class="leading-loose text-gray-700 text-sm mb-6 font-light">
                 함께 공부하며 꿈을 키우던 두 사람이<br>
                 이제 평생의 반려자가 되어<br>
                 새로운 출발선에 섭니다.<br><br>
@@ -111,11 +114,11 @@
             </div>
             <div class="mt-8 hand-font text-xl">
                 <div class="mb-2">
-                    <span class="text-base text-gray-500 mr-2">신랑</span> 
+                    <span class="text-base font-serif text-gray-500 mr-2">신랑</span> 
                     <strong>최윤호</strong>
                 </div>
                 <div>
-                    <span class="text-base text-gray-500 mr-2">신부</span> 
+                    <span class="text-base font-serif text-gray-500 mr-2">신부</span> 
                     <strong>황신혜</strong>
                 </div>
             </div>
@@ -150,7 +153,7 @@
 
         <section class="py-12 px-6 text-center fade-in-up">
             <h2 class="hand-font text-3xl mb-2">9월</h2>
-            <p class="text-sm text-gray-400 mb-6">September, 2026</p>
+            <p class="text-sm text-gray-400 mb-6 font-serif">September, 2026</p>
             
             <div class="inline-block w-full max-w-xs">
                 <div class="grid grid-cols-7 gap-2 text-sm hand-font text-lg">
@@ -219,7 +222,7 @@
                     <h3 class="font-bold text-lg mb-1">연세대학교 알렌관</h3>
                     <p class="text-xs text-gray-500 flex justify-center items-center gap-2">
                         서울 서대문구 신촌동 134 (서대문구 연세로 50)
-                        <button onclick="copyAddress('서울 서대문구 신촌동 134')" class="text-[10px] bg-gray-100 border border-gray-300 rounded px-1.5 py-0.5 hover:bg-gray-200 transition">
+                        <button onclick="copyAddress('서울 서대문구 신촌동 134')" class="text-[10px] bg-gray-100 border border-gray-300 rounded px-1.5 py-0.5 hover:bg-gray-200 transition font-sans">
                             <i class="far fa-copy"></i> 주소 복사
                         </button>
                     </p>
@@ -229,9 +232,9 @@
                     <img src="map1.png" alt="연세대학교 알렌관 약도" class="w-full h-auto object-contain">
                 </div>
                 <div class="grid grid-cols-3 gap-2">
-                    <button onclick="window.open('https://map.naver.com/p/search/연세대학교%20알렌관')" class="bg-[#03C75A] text-white py-2 rounded text-xs font-bold hover:opacity-90 transition">네이버 지도</button>
-                    <button onclick="window.open('https://map.kakao.com/link/search/연세대학교%20알렌관')" class="bg-[#FAE100] text-black py-2 rounded text-xs font-bold hover:opacity-90 transition">카카오 맵</button>
-                    <button onclick="copyAddress('연세대학교 알렌관'); alert('주소가 복사되었습니다. 티맵에서 붙여넣기 해주세요.')" class="bg-[#000000] text-white py-2 rounded text-xs font-bold hover:opacity-90 transition">티맵</button>
+                    <button onclick="window.open('https://map.naver.com/p/search/연세대학교%20알렌관')" class="bg-[#03C75A] text-white py-2 rounded text-xs font-bold hover:opacity-90 transition font-sans">네이버 지도</button>
+                    <button onclick="window.open('https://map.kakao.com/link/search/연세대학교%20알렌관')" class="bg-[#FAE100] text-black py-2 rounded text-xs font-bold hover:opacity-90 transition font-sans">카카오 맵</button>
+                    <button onclick="copyAddress('연세대학교 알렌관'); alert('주소가 복사되었습니다. 티맵에서 붙여넣기 해주세요.')" class="bg-[#000000] text-white py-2 rounded text-xs font-bold hover:opacity-90 transition font-sans">티맵</button>
                 </div>
             </div>
 
@@ -272,7 +275,7 @@
                 
                 <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
                     <h3 class="hand-font text-xl mb-3 text-blue-900 flex items-center">
-                        <span class="text-base mr-2">신랑측</span> 최윤호
+                        <span class="text-base mr-2 font-serif">신랑측</span> 최윤호
                     </h3>
                     
                     <div class="flex justify-between items-center bg-blue-50 p-3 rounded mb-2">
@@ -280,10 +283,10 @@
                             <span class="font-bold">카카오뱅크</span> (신랑)<br>
                             <span class="text-xs text-gray-500">123-45-67890</span>
                         </div>
-                        <button onclick="copyAccountNumber('카카오뱅크 123-45-67890 최윤호')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition">복사하기</button>
+                        <button onclick="copyAccountNumber('카카오뱅크 123-45-67890 최윤호')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition font-sans">복사하기</button>
                     </div>
 
-                    <button onclick="toggleAccount('groom-parents', this)" class="w-full py-2 text-xs text-gray-500 bg-gray-50 border border-gray-100 rounded flex justify-center items-center hover:bg-gray-100 transition mt-2">
+                    <button onclick="toggleAccount('groom-parents', this)" class="w-full py-2 text-xs text-gray-500 bg-gray-50 border border-gray-100 rounded flex justify-center items-center hover:bg-gray-100 transition mt-2 font-sans">
                         <span>혼주 계좌번호 보기</span> <i class="fas fa-chevron-down ml-2 transition-transform duration-300"></i>
                     </button>
 
@@ -293,21 +296,21 @@
                                 <span class="font-bold">신랑 아버지</span> 성함<br>
                                 <span class="text-xs text-gray-500">은행명 000-0000-0000</span>
                             </div>
-                            <button onclick="copyAccountNumber('은행명 000-0000-0000 예금주')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition">복사</button>
+                            <button onclick="copyAccountNumber('은행명 000-0000-0000 예금주')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition font-sans">복사</button>
                         </div>
                         <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
                             <div class="text-sm text-gray-700">
                                 <span class="font-bold">신랑 어머니</span> 성함<br>
                                 <span class="text-xs text-gray-500">은행명 000-0000-0000</span>
                             </div>
-                            <button onclick="copyAccountNumber('은행명 000-0000-0000 예금주')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition">복사</button>
+                            <button onclick="copyAccountNumber('은행명 000-0000-0000 예금주')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition font-sans">복사</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
                     <h3 class="hand-font text-xl mb-3 text-pink-900 flex items-center">
-                        <span class="text-base mr-2">신부측</span> 황신혜
+                        <span class="text-base mr-2 font-serif">신부측</span> 황신혜
                     </h3>
                     
                     <div class="flex justify-between items-center bg-pink-50 p-3 rounded mb-2">
@@ -315,10 +318,10 @@
                             <span class="font-bold">국민은행</span> (신부)<br>
                             <span class="text-xs text-gray-500">098-765-4321</span>
                         </div>
-                        <button onclick="copyAccountNumber('국민은행 098-765-4321 황신혜')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition">복사하기</button>
+                        <button onclick="copyAccountNumber('국민은행 098-765-4321 황신혜')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition font-sans">복사하기</button>
                     </div>
 
-                    <button onclick="toggleAccount('bride-parents', this)" class="w-full py-2 text-xs text-gray-500 bg-gray-50 border border-gray-100 rounded flex justify-center items-center hover:bg-gray-100 transition mt-2">
+                    <button onclick="toggleAccount('bride-parents', this)" class="w-full py-2 text-xs text-gray-500 bg-gray-50 border border-gray-100 rounded flex justify-center items-center hover:bg-gray-100 transition mt-2 font-sans">
                         <span>혼주 계좌번호 보기</span> <i class="fas fa-chevron-down ml-2 transition-transform duration-300"></i>
                     </button>
 
@@ -328,14 +331,14 @@
                                 <span class="font-bold">신부 아버지</span> 성함<br>
                                 <span class="text-xs text-gray-500">은행명 000-0000-0000</span>
                             </div>
-                            <button onclick="copyAccountNumber('은행명 000-0000-0000 예금주')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition">복사</button>
+                            <button onclick="copyAccountNumber('은행명 000-0000-0000 예금주')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition font-sans">복사</button>
                         </div>
                         <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
                             <div class="text-sm text-gray-700">
                                 <span class="font-bold">신부 어머니</span> 성함<br>
                                 <span class="text-xs text-gray-500">은행명 000-0000-0000</span>
                             </div>
-                            <button onclick="copyAccountNumber('은행명 000-0000-0000 예금주')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition">복사</button>
+                            <button onclick="copyAccountNumber('은행명 000-0000-0000 예금주')" class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1.5 rounded hover:bg-gray-100 transition font-sans">복사</button>
                         </div>
                     </div>
                 </div>
@@ -349,7 +352,7 @@
                 <button onclick="shareLink()" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-800 hover:bg-gray-200 transition shadow-lg"><i class="fas fa-link"></i></button>
                 <button class="w-12 h-12 bg-[#FAE100] rounded-full flex items-center justify-center text-black hover:opacity-90 transition shadow-lg"><i class="fas fa-comment"></i></button>
             </div>
-            <p class="text-xs text-gray-500 mt-8">Copyright 2026. YoonHo & Sinhye. All rights reserved.</p>
+            <p class="text-xs text-gray-500 mt-8 font-sans">Copyright 2026. YoonHo & Sinhye. All rights reserved.</p>
         </footer>
 
     </div>
