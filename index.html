@@ -776,7 +776,17 @@
             }
         }
 
+        // Prevent browser from automatically restoring scroll position or scrolling to hash on load
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
         window.onload = function() {
+            window.scrollTo(0, 0);
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 0);
+
             bgm.volume = 0.5;
             setMusicState(false);
             if (window.location.hash === '#thanks') {
