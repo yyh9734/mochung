@@ -907,6 +907,19 @@
         }
         window.addEventListener('scroll', updateBackToTop, { passive: true });
 
+        // Smooth scroll for anchor links without updating URL hash
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
         function toggleLargeText() {
             const isLarge = document.body.classList.toggle('large-text');
             largeTextButtons.forEach((button) => {
