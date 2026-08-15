@@ -43,9 +43,6 @@ function addRSVP(data) {
   const name = cleanText(data.name, 30);
   const relation = cleanText(data.relation || '신랑측', 20);
   const attendance = cleanText(data.attendance || '참석', 20);
-  const guestCount = cleanText(data.guestCount || '1명', 20);
-  const phone = cleanText(data.phone || '', 20);
-  const note = cleanText(data.note || '', 200);
   const createdAt = new Date().toISOString();
 
   if (!name) throw new Error('성함을 입력해주세요.');
@@ -55,20 +52,14 @@ function addRSVP(data) {
     createdAt,
     name,
     relation,
-    attendance,
-    guestCount,
-    phone,
-    note
+    attendance
   ]);
 
   return {
     createdAt: createdAt,
     name: name,
     relation: relation,
-    attendance: attendance,
-    guestCount: guestCount,
-    phone: phone,
-    note: note
+    attendance: attendance
   };
 }
 
@@ -81,10 +72,7 @@ function listRSVPs() {
     createdAt: row[0],
     name: row[1],
     relation: row[2],
-    attendance: row[3],
-    guestCount: row[4],
-    phone: row[5],
-    note: row[6]
+    attendance: row[3]
   }));
 }
 
@@ -96,7 +84,7 @@ function getRSVPSheet() {
     sheet = spreadsheet.insertSheet(SHEET_NAME);
   }
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(['등록일시', '성함', '구분', '참석여부', '동반인원', '연락처', '메모']);
+    sheet.appendRow(['등록일시', '성함', '구분', '참석여부']);
   }
 
   return sheet;
