@@ -370,7 +370,10 @@
                 <a href="#location" class="bg-white/70 border border-stone-300 text-stone-800 py-3 rounded-sm text-sm font-bold hover:bg-white transition font-sans">
                     <i class="fas fa-map-marker-alt mr-1"></i> 오시는 길
                 </a>
-                <a href="#gift" class="col-span-2 bg-white/70 border border-stone-300 text-stone-800 py-3 rounded-sm text-sm font-bold hover:bg-white transition font-sans">
+                <a href="#afterparty" class="bg-white/70 border border-stone-300 text-stone-800 py-3 rounded-sm text-sm font-bold hover:bg-white transition font-sans">
+                    <i class="fas fa-glass-cheers mr-1"></i> 애프터파티
+                </a>
+                <a href="#gift" class="bg-white/70 border border-stone-300 text-stone-800 py-3 rounded-sm text-sm font-bold hover:bg-white transition font-sans">
                     <i class="far fa-credit-card mr-1"></i> 마음 전하기
                 </a>
                 </div>
@@ -599,6 +602,27 @@
             </div>
         </section>
 
+        <section id="afterparty" class="page-section py-16 px-6 fade-in-up bg-[#f4f1eb] text-center flex flex-col justify-center">
+            <p class="editorial-label text-[11px] text-stone-500 mb-3 font-sans">After Party RSVP</p>
+            <h2 class="hand-font text-3xl mb-4 text-stone-950">애프터파티 안내</h2>
+            <div class="bg-white/80 p-6 rounded-sm border border-stone-200 shadow-sm max-w-sm mx-auto w-full">
+                <p class="text-xs text-amber-800 font-bold mb-2 font-sans">WELCOME PARTY & AFTER PARTY</p>
+                <p class="text-sm text-stone-700 leading-relaxed mb-4">
+                    식전 4시 웰컴 파티 및<br>
+                    예식 후 애프터파티가 진행됩니다.<br>
+                    원활한 행사진행 및 참석 인원 파악을 위해<br>
+                    참석 여부를 알려주시면 감사하겠습니다.
+                </p>
+                <div class="text-xs text-stone-500 space-y-1 mb-6 py-3 border-y border-stone-200/80 font-sans">
+                    <p><span class="font-bold text-stone-700">장소:</span> 연세대학교 알렌관</p>
+                    <p><span class="font-bold text-stone-700">시간:</span> 식전 4:00 PM 웰컴 파티 / 식후 애프터파티</p>
+                </div>
+                <button type="button" onclick="openAfterPartySheet()" class="w-full py-3.5 bg-stone-900 text-white rounded-sm font-bold text-sm hover:bg-black transition font-sans shadow">
+                    <i class="fas fa-edit mr-1.5 text-amber-300"></i> 참석 여부 답변하기
+                </button>
+            </div>
+        </section>
+
         <section id="gift" class="page-section py-12 pb-24 px-6 fade-in-up bg-[#f8f6f1]">
             <p class="editorial-label text-[11px] text-stone-500 mb-3 text-center font-sans">With Heart</p>
             <h2 class="hand-font text-3xl mb-6 text-center text-stone-950">마음 전하실 곳</h2>
@@ -715,7 +739,77 @@
                 닫기
             </button>
         </div>
+        <div id="afterpartyOverlay" class="share-overlay" onclick="closeAfterPartySheet()" aria-hidden="true"></div>
+        <div id="afterpartySheet" class="share-sheet px-6 pt-5 pb-7 max-h-[90vh] overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="afterpartySheetTitle">
+            <div class="w-10 h-1 bg-stone-300 rounded-full mx-auto mb-4"></div>
+            <div class="text-center mb-5">
+                <h2 id="afterpartySheetTitle" class="hand-font text-2xl text-stone-900">애프터파티 참석 여부</h2>
+                <p class="text-xs text-stone-500 mt-1 font-sans">참석 여부 및 동반 인원을 작성해주세요.</p>
+            </div>
 
+            <form id="afterpartyForm" onsubmit="handleAfterPartySubmit(event)" class="space-y-4 font-sans text-left text-xs text-stone-700">
+                <div>
+                    <label class="block font-bold mb-1.5 text-stone-800">성함 <span class="text-red-500">*</span></label>
+                    <input type="text" id="apName" required placeholder="성함을 입력해주세요" class="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded text-sm focus:outline-none focus:border-stone-900">
+                </div>
+
+                <div>
+                    <label class="block font-bold mb-1.5 text-stone-800">구분 <span class="text-red-500">*</span></label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="flex items-center justify-center p-2.5 bg-stone-50 border border-stone-300 rounded cursor-pointer has-[:checked]:bg-stone-900 has-[:checked]:text-white has-[:checked]:border-stone-900">
+                            <input type="radio" name="apRelation" value="신랑측" checked class="hidden">
+                            <span class="font-bold">신랑측</span>
+                        </label>
+                        <label class="flex items-center justify-center p-2.5 bg-stone-50 border border-stone-300 rounded cursor-pointer has-[:checked]:bg-stone-900 has-[:checked]:text-white has-[:checked]:border-stone-900">
+                            <input type="radio" name="apRelation" value="신부측" class="hidden">
+                            <span class="font-bold">신부측</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold mb-1.5 text-stone-800">참석 여부 <span class="text-red-500">*</span></label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="flex items-center justify-center p-2.5 bg-stone-50 border border-stone-300 rounded cursor-pointer has-[:checked]:bg-stone-900 has-[:checked]:text-white has-[:checked]:border-stone-900">
+                            <input type="radio" name="apAttendance" value="참석" checked class="hidden" onchange="toggleGuestCount(true)">
+                            <span class="font-bold">🎉 참석합니다</span>
+                        </label>
+                        <label class="flex items-center justify-center p-2.5 bg-stone-50 border border-stone-300 rounded cursor-pointer has-[:checked]:bg-stone-900 has-[:checked]:text-white has-[:checked]:border-stone-900">
+                            <input type="radio" name="apAttendance" value="불참" class="hidden" onchange="toggleGuestCount(false)">
+                            <span class="font-bold">아쉽지만 불참해요</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="apGuestCountWrapper">
+                    <label class="block font-bold mb-1.5 text-stone-800">동반 인원 (본인 포함)</label>
+                    <select id="apGuestCount" class="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded text-sm focus:outline-none focus:border-stone-900">
+                        <option value="1명 (본인만)">1명 (본인만)</option>
+                        <option value="2명 (본인 포함)">2명 (본인 포함)</option>
+                        <option value="3명 (본인 포함)">3명 (본인 포함)</option>
+                        <option value="4명 이상">4명 이상</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-bold mb-1.5 text-stone-800">연락처 <span class="text-stone-400 font-normal">(선택 - 안내용)</span></label>
+                    <input type="tel" id="apPhone" placeholder="010-0000-0000" class="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded text-sm focus:outline-none focus:border-stone-900">
+                </div>
+
+                <div>
+                    <label class="block font-bold mb-1.5 text-stone-800">전하고 싶은 말씀 <span class="text-stone-400 font-normal">(선택)</span></label>
+                    <textarea id="apNote" rows="2" placeholder="축하 메시지나 참고사항을 남겨주세요" class="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded text-sm focus:outline-none focus:border-stone-900 resize-none"></textarea>
+                </div>
+
+                <button type="submit" id="apSubmitBtn" class="w-full py-3.5 bg-stone-900 text-white rounded text-sm font-bold hover:bg-black transition mt-4 shadow">
+                    답변 제출하기
+                </button>
+            </form>
+
+            <button type="button" onclick="closeAfterPartySheet()" class="mt-3 w-full bg-stone-100 text-stone-600 py-3 rounded text-sm font-bold hover:bg-stone-200 transition font-sans">
+                취소
+            </button>
+        </div>
         <a id="backToTop" href="#index" class="back-to-top is-hidden" aria-label="맨 위로 이동">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
                 <path d="M12 19V5"></path>
@@ -734,6 +828,10 @@
         const largeTextButtons = Array.from(document.querySelectorAll('.largeTextToggle'));
         const shareOverlay = document.getElementById('shareOverlay');
         const shareSheet = document.getElementById('shareSheet');
+        const afterpartyOverlay = document.getElementById('afterpartyOverlay');
+        const afterpartySheet = document.getElementById('afterpartySheet');
+        const afterpartyScriptUrl = ''; // Google Apps Script URL
+        window.afterpartyScriptUrl = afterpartyScriptUrl;
         const introScreen = document.getElementById('introScreen');
         const introConfetti = document.getElementById('introConfetti');
         const invitationTitle = '최윤호 & 황신혜 결혼합니다';
@@ -998,8 +1096,82 @@
             shareOverlay.classList.remove('is-open');
             shareSheet.classList.remove('is-open');
         }
+        function openAfterPartySheet() {
+            afterpartyOverlay.classList.add('is-open');
+            afterpartySheet.classList.add('is-open');
+        }
+        function closeAfterPartySheet() {
+            afterpartyOverlay.classList.remove('is-open');
+            afterpartySheet.classList.remove('is-open');
+        }
+        function toggleGuestCount(isAttending) {
+            const wrapper = document.getElementById('apGuestCountWrapper');
+            if (wrapper) {
+                wrapper.style.display = isAttending ? 'block' : 'none';
+            }
+        }
+        function handleAfterPartySubmit(event) {
+            event.preventDefault();
+            const submitBtn = document.getElementById('apSubmitBtn');
+            const name = document.getElementById('apName').value.trim();
+            const relation = document.querySelector('input[name="apRelation"]:checked')?.value || '신랑측';
+            const attendance = document.querySelector('input[name="apAttendance"]:checked')?.value || '참석';
+            const guestCount = attendance === '참석' ? document.getElementById('apGuestCount').value : '0명 (불참)';
+            const phone = document.getElementById('apPhone').value.trim();
+            const note = document.getElementById('apNote').value.trim();
+
+            if (!name) {
+                alert('성함을 입력해주세요.');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '제출 중...';
+
+            const payload = {
+                name: name,
+                relation: relation,
+                attendance: attendance,
+                guestCount: guestCount,
+                phone: phone,
+                note: note,
+                createdAt: new Date().toISOString()
+            };
+
+            try {
+                const saved = JSON.parse(localStorage.getItem('afterparty_rsvps') || '[]');
+                saved.push(payload);
+                localStorage.setItem('afterparty_rsvps', JSON.stringify(saved));
+            } catch (err) {
+                // ignore
+            }
+
+            const scriptUrl = window.afterpartyScriptUrl || '';
+
+            if (scriptUrl) {
+                const urlWithParams = scriptUrl + (scriptUrl.includes('?') ? '&' : '?') + 
+                    Object.keys(payload).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(payload[k])}`).join('&');
+                
+                fetch(urlWithParams, { mode: 'no-cors' })
+                    .then(() => finishSubmit())
+                    .catch(() => finishSubmit());
+            } else {
+                finishSubmit();
+            }
+
+            function finishSubmit() {
+                alert(`감사합니다, ${name}님!\n애프터파티 참석 여부가 전달되었습니다.`);
+                submitBtn.disabled = false;
+                submitBtn.textContent = '답변 제출하기';
+                document.getElementById('afterpartyForm').reset();
+                closeAfterPartySheet();
+            }
+        }
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') closeShareSheet();
+            if (event.key === 'Escape') {
+                closeShareSheet();
+                closeAfterPartySheet();
+            }
         });
 
         function copyAccountNumber(text) {
