@@ -2,6 +2,10 @@
  * 애프터파티 참석 여부 수집용 Google Apps Script
  * Google Sheet 연동 코드
  */
+
+// 만약 독립 실행형 스크립트로 만드셨다면 아래 SPREADSHEET_ID에 구글 시트 주소의 ID를 넣어주세요.
+// 예: https://docs.google.com/spreadsheets/d/1ABC123.../edit -> '1ABC123...'
+const SPREADSHEET_ID = ''; 
 const SHEET_NAME = 'afterparty_rsvp';
 
 function doGet(e) {
@@ -77,12 +81,48 @@ function listRSVPs() {
 }
 
 function getRSVPSheet() {
-  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = spreadsheet.getSheetByName(SHEET_NAME);
+  let spreadsheet = null;
 
-  if (!sheet) {
-    sheet = spreadsheet.insertSheet(SHEET_NAME);
+  // 1. SPREADSHEET_ID가 지정된 경우
+  if (SPREADSHEET_ID && SPREADSHEET_ID.trim()) {
+    try {
+      spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID.trim());
+    } catch (e) {}
   }
+
+  // 2. 바인딩된 시트가 있는 경우
+  if (!spreadsheet) {
+    try {
+      spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    } catch (e) {}
+  }
+
+  // 3. 드라이브에서 시트 자동 탐색
+  if (!spreadsheet) {
+    try {
+      const files = DriveApp.searchFiles('mimeType = "application/vnd.google-apps.spreadsheet"');
+      if (files.hasNext()) {
+        spreadsheet = SpreadsheetApp.open(files.next());
+      }
+    } catch (e) {}
+  }
+
+  if (!spreadsheet) {
+    throw new Error('스프레드시트를 찾을 수 없습니다.');
+  }
+
+  let sheet = spreadsheet.getSheetByName(SHEET_NAME);
+  if (!sheet) {
+    // 첫 번째 시트 탭 활용 또는 신규 생성
+    const sheets = spreadsheet.getSheets();
+    if (sheets.length > 0 && sheets[0].getLastRow() === 0) {
+      sheet = sheets[0];
+      sheet.setName(SHEET_NAME);
+    } else {
+      sheet = spreadsheet.insertSheet(SHEET_NAME);
+    }
+  }
+
   if (sheet.getLastRow() === 0) {
     sheet.appendRow(['등록일시', '성함', '구분', '참석여부']);
   }

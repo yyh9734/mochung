@@ -1136,12 +1136,24 @@
             const scriptUrl = window.afterpartyScriptUrl || '';
 
             if (scriptUrl) {
-                const urlWithParams = scriptUrl + (scriptUrl.includes('?') ? '&' : '?') + 
-                    Object.keys(payload).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(payload[k])}`).join('&');
-                
-                fetch(urlWithParams, { mode: 'no-cors' })
-                    .then(() => finishSubmit())
-                    .catch(() => finishSubmit());
+                const query = Object.keys(payload).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(payload[k])}`).join('&');
+                const urlWithParams = scriptUrl + (scriptUrl.includes('?') ? '&' : '?') + query;
+
+                try {
+                    const img = new Image();
+                    img.src = urlWithParams;
+                } catch(e) {}
+
+                try {
+                    fetch(urlWithParams, { mode: 'no-cors' });
+                } catch(e) {}
+
+                fetch(scriptUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify(payload)
+                }).then(() => finishSubmit()).catch(() => finishSubmit());
             } else {
                 finishSubmit();
             }
