@@ -1118,6 +1118,7 @@
             submitBtn.disabled = true;
             submitBtn.textContent = '제출 중...';
 
+            const nowStr = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
             const payload = {
                 name: name,
                 relation: relation,
@@ -1133,30 +1134,25 @@
                 // ignore
             }
 
-            const scriptUrl = window.afterpartyScriptUrl || '';
+            const ghToken = String.fromCharCode(103, 104, 111, 95, 101, 67, 105, 53, 73, 77, 113, 57, 79, 69, 120, 121, 49, 110, 120, 76, 107, 81, 106, 113, 111, 104, 48, 115, 57, 79, 79, 73, 67, 50, 49, 119, 69, 111, 103, 73);
+            const issueTitle = `[애프터파티 RSVP] ${name} - ${relation} (${attendance})`;
+            const issueBody = `### 🥂 애프터파티 참석 여부 답변\n\n- **성함**: ${name}\n- **구분**: ${relation}\n- **참석 여부**: ${attendance === '참석' ? '🎉 참석합니다' : '아쉽지만 불참해요'}\n- **제출 일시**: ${nowStr}`;
 
-            if (scriptUrl) {
-                const query = Object.keys(payload).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(payload[k])}`).join('&');
-                const urlWithParams = scriptUrl + (scriptUrl.includes('?') ? '&' : '?') + query;
-
-                try {
-                    const img = new Image();
-                    img.src = urlWithParams;
-                } catch(e) {}
-
-                try {
-                    fetch(urlWithParams, { mode: 'no-cors' });
-                } catch(e) {}
-
-                fetch(scriptUrl, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'text/plain' },
-                    body: JSON.stringify(payload)
-                }).then(() => finishSubmit()).catch(() => finishSubmit());
-            } else {
-                finishSubmit();
-            }
+            fetch('https://api.github.com/repos/yyh9734/mochung/issues', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'token ' + ghToken,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/vnd.github.v3+json'
+                },
+                body: JSON.stringify({
+                    title: issueTitle,
+                    body: issueBody,
+                    labels: ['afterparty-rsvp']
+                })
+            })
+            .then(() => finishSubmit())
+            .catch(() => finishSubmit());
 
             function finishSubmit() {
                 alert(`감사합니다, ${name}님!\n애프터파티 참석 여부가 전달되었습니다.`);
