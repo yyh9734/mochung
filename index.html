@@ -370,10 +370,10 @@
                 <a href="#location" class="bg-white/70 border border-stone-300 text-stone-800 py-3 rounded-sm text-sm font-bold hover:bg-white transition font-sans">
                     <i class="fas fa-map-marker-alt mr-1"></i> 오시는 길
                 </a>
-                <a href="#afterparty" class="bg-white/70 border border-stone-300 text-stone-800 py-3 rounded-sm text-sm font-bold hover:bg-white transition font-sans">
+                <a href="#afterparty" id="afterpartyMenuBtn" class="hidden bg-white/70 border border-stone-300 text-stone-800 py-3 rounded-sm text-sm font-bold hover:bg-white transition font-sans">
                     <i class="fas fa-glass-cheers mr-1"></i> 애프터파티
                 </a>
-                <a href="#gift" class="bg-white/70 border border-stone-300 text-stone-800 py-3 rounded-sm text-sm font-bold hover:bg-white transition font-sans">
+                <a href="#gift" id="giftMenuBtn" class="col-span-2 bg-white/70 border border-stone-300 text-stone-800 py-3 rounded-sm text-sm font-bold hover:bg-white transition font-sans">
                     <i class="far fa-credit-card mr-1"></i> 마음 전하기
                 </a>
                 </div>
@@ -602,7 +602,7 @@
             </div>
         </section>
 
-        <section id="afterparty" class="page-section py-16 px-6 fade-in-up bg-[#f4f1eb] text-center flex flex-col justify-center">
+        <section id="afterparty" class="page-section py-16 px-6 fade-in-up bg-[#f4f1eb] text-center flex flex-col justify-center hidden">
             <p class="editorial-label text-[11px] text-stone-500 mb-3 font-sans">After Party RSVP</p>
             <h2 class="hand-font text-3xl mb-4 text-stone-950">애프터파티 안내</h2>
             <div class="bg-white/80 p-6 rounded-sm border border-stone-200 shadow-sm max-w-sm mx-auto w-full">
@@ -870,6 +870,7 @@
             if (window.location.hash === '#thanks') {
                 history.replaceState(null, '', '#index');
             }
+            checkAfterPartyAccess();
             initIntro();
             tryStartMusic({ silent: true });
             updateBackToTop();
@@ -1066,6 +1067,25 @@
                 return;
             }
             copyInvitationLink();
+        }
+        function checkAfterPartyAccess() {
+            const hash = (window.location.hash || '').toLowerCase();
+            const search = (window.location.search || '').toLowerCase();
+            const isAP = hash.includes('afterparty') || search.includes('afterparty');
+
+            const apSection = document.getElementById('afterparty');
+            const apMenuBtn = document.getElementById('afterpartyMenuBtn');
+            const giftMenuBtn = document.getElementById('giftMenuBtn');
+
+            if (isAP) {
+                if (apSection) apSection.classList.remove('hidden');
+                if (apMenuBtn) apMenuBtn.classList.remove('hidden');
+                if (giftMenuBtn) giftMenuBtn.classList.remove('col-span-2');
+
+                setTimeout(() => {
+                    openAfterPartySheet();
+                }, 400);
+            }
         }
         function openShareSheet() {
             shareOverlay.classList.add('is-open');
